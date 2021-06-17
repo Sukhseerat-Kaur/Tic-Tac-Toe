@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0px;
+  background: -webkit-linear-gradient(135deg, #fff6b7 10%, #f6416c 100%);
+  font-size: 100px;
+  font-family: cursive;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h1 {
+  font-size: 70px;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.turns {
+  font-size: 35px;
+  font-weight: bold;
+}
+.turns.x {
+  color: rebeccapurple;
+}
+
+.turns.o {
+  color: red;
+}
+
+.board {
+  width: 400px;
+  height: 400px;
+  /* But this takes this element out of html flow. So don't use it.
+  position: absolute;
+  inset: 0;
+  margin: auto; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: 126.66px;
+  grid-auto-columns: 126.66px;
+  cursor: pointer;
+}
+
+.cell {
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.39);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:hover {
+  background-color: rgba(255, 255, 255, 0.657);
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 15px 15px 40px -6px rgba(0, 0, 0, 0.2);
+  margin: -4px 0 0 -4px;
+}
+.cell.x {
+  color: rebeccapurple;
+  cursor: not-allowed;
+}
+.cell.o {
+  color: red;
+  cursor: not-allowed;
+}
+
+.board.x .cell:not(.x):not(.o),
+.board.o .cell:not(.x):not(.o) {
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.board.x .cell:not(.x):not(.o):hover,
+.board.o .cell:not(.x):not(.o):hover {
+  text-indent: 0px;
+  color: rgba(129, 129, 129, 0.3);
+}
+
+.finish {
+  display: none;
+  position: absolute;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 30px;
+  width: 500px;
+  height: 200px;
+  border-radius: 30px;
+  background-color: rgb(243, 241, 190);
+  box-shadow: 6px 7px 42px 0px rgba(0, 0, 0, 0.9);
+  /* color: orangered; */
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(82, 80, 80, 0.473);
+}
+
+.message button {
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.finish.dark {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(32, 30, 30, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.finish button {
+  background: -webkit-linear-gradient(135deg, #fff6b7 10%, #f6416c 100%);
+  box-shadow: 1px 1px 5px 2px rgba(128, 128, 128, 0.596);
+  border: none;
+}
+
+.finish button:active {
+  box-shadow: inset 1px 1px 5px 1px rgba(158, 157, 157, 0.356),
+    inset 1px 1px 5px 1px rgba(245, 244, 244, 0.5);
+  font-size: 18px;
+}
